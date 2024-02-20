@@ -33,7 +33,7 @@ const colorCodeSchema = new mongoose.Schema({
 const ColorCode = mongoose.model('ColorCode', colorCodeSchema);
 
 // POST endpoint to store color codes
-app.post('/', async (req, res) => {
+app.post('/colors', async (req, res) => {
     const { color } = req.body;
 
     try {
@@ -56,7 +56,7 @@ app.post('/', async (req, res) => {
 });
 
 // GET endpoint to retrieve all color codes
-app.get('/', async (req, res) => {
+app.get('/colors', async (req, res) => {
     try {
         // Retrieve all ColorCodes
         const colorCodes = await ColorCode.find();
@@ -67,17 +67,17 @@ app.get('/', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
-// app.get('/', async (req, res) => {
-//     try {
-//         // Retrieve all ColorCodes
+app.get('/', async (req, res) => {
+    try {
+        // Retrieve all ColorCodes
         
-//         res.send("hello colors");
-//     } catch (err) {
-//         // Handle errors
-//         console.error('Error retrieving color codes:', err);
-//         res.status(500).json({ message: 'Internal server error' });
-//     }
-// });
+        res.send("hello colors");
+    } catch (err) {
+        // Handle errors
+        console.error('Error retrieving color codes:', err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
