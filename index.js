@@ -67,7 +67,17 @@ app.get('/colors', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
-
+app.get('/', async (req, res) => {
+    try {
+        // Retrieve all ColorCodes
+        
+        res.send("hello colors");
+    } catch (err) {
+        // Handle errors
+        console.error('Error retrieving color codes:', err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
