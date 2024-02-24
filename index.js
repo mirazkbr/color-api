@@ -100,7 +100,7 @@ app.put('/colors/:id', async (req, res) => {
   
     try {
       const updatedColorCode = await ColorCode.findByIdAndUpdate(
-        id,
+        _id,
         { color, name, category },
         { new: true }
       );
@@ -119,7 +119,7 @@ app.put('/colors/:id', async (req, res) => {
     const { id } = req.params;
   
     try {
-      const deletedColorCode = await ColorCode.findByIdAndDelete(id);
+      const deletedColorCode = await ColorCode.findByIdAndDelete(_id);
   
       if (!deletedColorCode) {
         return res.status(404).json({ message: 'Color code not found' });
