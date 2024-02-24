@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 7000 || https://color-api-xgao.onrender.com/;
 
 app.use(bodyParser.json());
 app.use(cors());
