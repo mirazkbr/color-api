@@ -1,4 +1,3 @@
-// index.js
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -92,8 +91,6 @@ app.get('/colors', async (req, res) => {
   }
 });
 
-
-  
 app.put('/colors/:id', async (req, res) => {
     const { id } = req.params;
     const { color, name, category } = req.body;
@@ -130,7 +127,6 @@ app.delete('/colors/:id', async (req, res) => {
         handleError(err, res);
     }
 });
-// Additional routes for updating and deleting colors go here
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
