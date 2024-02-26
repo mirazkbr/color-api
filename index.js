@@ -97,39 +97,39 @@ app.get('/colors', async (req, res) => {
 app.put('/colors/:id', async (req, res) => {
     const { id } = req.params;
     const { color, name, category } = req.body;
-  
+
     try {
-      const updatedColorCode = await ColorCode.findByIdAndUpdate(
-        _id,
-        { color, name, category },
-        { new: true }
-      );
-  
-      if (!updatedColorCode) {
-        return res.status(404).json({ message: 'Color code not found' });
-      }
-      
-      res.status(200).json({ message: 'Color code updated successfully', colorCode: updatedColorCode });
+        const updatedColorCode = await ColorCode.findByIdAndUpdate(
+            id, // Change _id to id
+            { color, name, category },
+            { new: true }
+        );
+
+        if (!updatedColorCode) {
+            return res.status(404).json({ message: 'Color code not found' });
+        }
+
+        res.status(200).json({ message: 'Color code updated successfully', colorCode: updatedColorCode });
     } catch (err) {
-      handleError(err, res);
+        handleError(err, res);
     }
-  });
-  
-  app.delete('/colors/:id', async (req, res) => {
+});
+
+app.delete('/colors/:id', async (req, res) => {
     const { id } = req.params;
-  
+
     try {
-      const deletedColorCode = await ColorCode.findByIdAndDelete(_id);
-  
-      if (!deletedColorCode) {
-        return res.status(404).json({ message: 'Color code not found' });
-      }
-  
-      res.status(200).json({ message: 'Color code deleted successfully', colorCode: deletedColorCode });
+        const deletedColorCode = await ColorCode.findByIdAndDelete(id); // Change _id to id
+
+        if (!deletedColorCode) {
+            return res.status(404).json({ message: 'Color code not found' });
+        }
+
+        res.status(200).json({ message: 'Color code deleted successfully', colorCode: deletedColorCode });
     } catch (err) {
-      handleError(err, res);
+        handleError(err, res);
     }
-  });
+});
 // Additional routes for updating and deleting colors go here
 
 app.listen(PORT, () => {
