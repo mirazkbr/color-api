@@ -8,19 +8,8 @@ const PORT = process.env.PORT || 7000;
 
 app.use(express.json());
 
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:5174',
-];
-
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Origin not allowed by CORS'));
-    }
-  },
+  origin: '*',
 };
 
 app.use(cors(corsOptions));
