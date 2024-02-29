@@ -133,16 +133,6 @@ app.listen(PORT, () => {
 });
 
 function handleError(error, res) {
-  if (error.response) {
-    console.error('Server responded with an error status:', error.response.status);
-    console.error('Error details:', error.response.data);
-    res.status(error.response.status).json({ message: error.response.data });
-  } else if (error.request) {
-    console.error('No response received from the server');
-    res.status(500).json({ message: 'Internal server error' });
-  } else {
-    console.error('Error setting up the request:', error.message);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-  console.error('Full error:', error);
+  console.error('Error:', error);
+  res.status(500).json({ message: 'Internal server error' });
 }
